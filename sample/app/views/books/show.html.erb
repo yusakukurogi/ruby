@@ -23,6 +23,16 @@
   <%= @book.備考 %>
 </p>
 
+<p>
+  <strong>登録日時:</strong>
+  <%= @book.Time.in_time_zone('Tokyo').strftime("%Y年%m月%d日 %H時%M分") %>
+</p>
+
+<p>
+  <strong>最終更新日時:</strong>
+  <%= @book.UpTime.in_time_zone('Tokyo').strftime("%Y年%m月%d日 %H時%M分") %>
+</p>
+
 <%= link_to '編集', edit_book_path(@book), class: "bluebtn" %> 
 <%= link_to '一覧に戻る', books_path, class: "bluebtn" %>
 <%= link_to '削除', @book, class: "bluebtn", method: :delete, data: { confirm: '本を削除しますか？' } %>

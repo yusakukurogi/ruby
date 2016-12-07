@@ -42,6 +42,8 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(book_params)
+    @book.Time = Time.now
+    @book.UpTime = Time.now
 
     respond_to do |format|
       if @book.save
@@ -57,6 +59,7 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update
+    @book.UpTime = Time.now 
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to @book, notice: '書籍データを更新しました。' }
@@ -86,6 +89,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:本の名前, :著者, :出版社, :ページ数, :備考)
+      params.require(:book).permit(:本の名前, :著者, :出版社, :ページ数, :備考, :Time)
     end
 end

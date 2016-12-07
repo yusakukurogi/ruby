@@ -10,6 +10,8 @@
       <th><%= link_to "書籍名", sort: "本の名前" %></th>
       <th><%= link_to "著者", sort: "著者" %></th>
       <th><%= link_to "出版社", sort: "出版社" %></th>
+      <th><%= link_to "登録日時", sort: "Time" %></th>
+      <th><%= link_to "最終更新日時", sort: "UpTime" %></th>
       <th colspan="3">メニュー</th>
     </tr>
   </thead>
@@ -19,6 +21,8 @@
         <td><%= book.本の名前 %></td>
         <td bgcolor="#e5e5ff"><%= book.著者 %></td>
         <td><%= book.出版社 %></td>
+        <td bgcolor="#e5e5ff"><%= book.Time.in_time_zone('Tokyo').strftime("%y/%m/%d %H:%M") %></td>
+        <td><%= book.UpTime.in_time_zone('Tokyo').strftime("%y/%m/%d %H:%M") %></td>
         <td width="50" bgcolor="#e5ffe5"><%= link_to '詳細', book, class: "bluebtn" %></td>
         <td width="50" bgcolor="#ffffe5"><%= link_to '編集', edit_book_path(book), class: "bluebtn" %></td>
         <td width="50" bgcolor="#ffe5e5"><%= link_to '削除', book, class: "bluebtn", method: :delete, data: { confirm: '本を削除しますか？' } %></td>

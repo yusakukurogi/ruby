@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205050018) do
+ActiveRecord::Schema.define(version: 20161207074124) do
 
   create_table "books", force: :cascade do |t|
     t.string   "本の名前"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20161205050018) do
     t.text     "備考"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "Time"
+    t.datetime "UpTime"
   end
 
   create_table "tasks", force: :cascade do |t|
