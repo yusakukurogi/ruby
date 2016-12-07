@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  本の名前: MyString
+  著者: MyString
+  出版社: MyString
+  ページ数: 1
+  備考: MyText
+
+two:
+  本の名前: MyString
+  著者: MyString
+  出版社: MyString
+  ページ数: 1
+  備考: MyText

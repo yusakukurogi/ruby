@@ -1,0 +1,42 @@
+<%= form_for(book) do |f| %>
+  <% if book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :書籍名 %>
+    <%= f.text_field :本の名前 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :著者 %>
+    <%= f.text_field :著者 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :出版社 %>
+    <%= f.text_field :出版社 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ページ数 %>
+    <%= f.number_field :ページ数 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :備考 %>
+    <%= f.text_area :備考 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

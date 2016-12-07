@@ -1,0 +1,21 @@
+<table>
+  <%= form_for :conditions, {:method => "get"} do |f| %>
+    <tr>
+      <td>書籍のタイトルで絞り込み：</td>
+      <td><%= f.text_field :bname %></td>
+    </tr>
+    <tr>
+      <td>著者で絞り込み：</td>
+      <td><%= f.text_field :bauthor %></td>
+    </tr>
+    <tr>
+      <td>出版社で絞り込み：</td>
+      <td><%= f.text_field :bcom %></td>
+    </tr>        
+    <tr>
+      <td colspan="2">
+        <%= f.submit "絞り込み" %>
+      </td>
+    </tr>
+  <% end %>
+</table>

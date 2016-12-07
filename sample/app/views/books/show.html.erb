@@ -1,0 +1,29 @@
+
+<p id="notice"><%= notice %></p>
+
+  <h2><%= @book.本の名前 %></h2>
+
+<p>
+  <strong>著者:</strong>
+  <%= @book.著者 %>
+</p>
+
+<p>
+  <strong>出版社:</strong>
+  <%= @book.出版社 %>
+</p>
+
+<p>
+  <strong>ページ数:</strong>
+  <%= @book.ページ数 %>
+</p>
+
+<p>
+  <strong>備考:</strong>
+  <%= @book.備考 %>
+</p>
+
+<%= link_to '編集', edit_book_path(@book), class: "bluebtn" %> 
+<%= link_to '一覧に戻る', books_path, class: "bluebtn" %>
+<%= link_to '削除', @book, class: "bluebtn", method: :delete, data: { confirm: '本を削除しますか？' } %>
+</body>
