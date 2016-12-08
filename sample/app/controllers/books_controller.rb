@@ -1,6 +1,17 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
+
+
+  def import
+    if params[:csv_file].blank?
+      redirect_to(books_url, alert: 'インポートするCSVファイルを選択してください')
+    else
+      num = Book.import(params[:csv_file])
+      redirect_to(books_url, notice: "#{num.to_s}件の書籍情報を追加 / 更新しました")
+    end
+  end
+
   # GET /books
   # GET /books.json
   def index

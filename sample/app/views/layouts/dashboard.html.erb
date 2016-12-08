@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><%= yield(:title) %> | Project name</title>
+    <%= stylesheet_link_tag    'dashboard', media: 'all' %>
+    <%= javascript_include_tag 'dashboard' %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul id="navbar-list-menu" class="nav navbar-nav navbar-right">
+            <!-- スマホ用のメニュー部分 -->
+            <%= sidebar_list_items() %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <!-- PC用のメニュー部分 -->
+            <%= sidebar_list_items() %>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <% if yield(:title) %>
+            <h1 class="page-header"><%= yield(:title) %></h1>
+          <% end %>
+          <% if flash[:notice] %>
+            <div class="alert alert-info"><%= flash[:notice] %></div>
+          <% end %>
+          <% if flash[:error] %>
+            <div class="alert alert-danger"><%= flash[:error] %></div>
+          <% end %>
+
+          <%= yield %>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+

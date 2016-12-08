@@ -4,7 +4,26 @@
 
 <%= render 'search_form' %>
 
-<table bgcolor="#e5f2ff" rules="all" bordercolor="#c0c0c0">
+<% provide(:title, '書籍管理システム') %>
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+  <h4>ファイルのインポート/エクスポート</h4>
+    <%= form_tag(import_books_path, :method => :post, multipart: true) do %>
+      <div class="form-group">
+        <%= file_field_tag :csv_file %>
+      </div>
+      <%= submit_tag "CSVファイルをインポート", :class => "btn btn-primary" %>
+    <% end %>
+    <%= link_to "CSVファイルとしてエクスポート", params.permit.merge({:format => :csv}), class: 'btn btn-success' %>
+  </div>
+</div>
+
+
+<%= link_to '新しい書籍の追加', new_book_path, class: 'btn btn-primary'%>
+<div class="table-responsive">
+<table bgcolor="#e5f2ff" rules="all" bordercolor="#c0c0c0" class="table table-striped">
   <thead>
     <tr bgcolor="#add8e6">
       <th><%= link_to "書籍名", sort: "本の名前" %></th>
@@ -23,14 +42,15 @@
         <td><%= book.出版社 %></td>
         <td bgcolor="#e5e5ff"><%= book.Time.in_time_zone('Tokyo').strftime("%y/%m/%d %H:%M") %></td>
         <td><%= book.UpTime.in_time_zone('Tokyo').strftime("%y/%m/%d %H:%M") %></td>
-        <td width="50" bgcolor="#e5ffe5"><%= link_to '詳細', book, class: "bluebtn" %></td>
-        <td width="50" bgcolor="#ffffe5"><%= link_to '編集', edit_book_path(book), class: "bluebtn" %></td>
-        <td width="50" bgcolor="#ffe5e5"><%= link_to '削除', book, class: "bluebtn", method: :delete, data: { confirm: '本を削除しますか？' } %></td>
+        <td width="50" bgcolor="#e5ffe5"><%= link_to '詳細', book, class: 'btn btn-primary' %></td>
+        <td width="50" bgcolor="#ffffe5"><%= link_to '編集', edit_book_path(book), class: 'btn btn-primary' %></td>
+        <td width="50" bgcolor="#ffe5e5"><%= link_to '削除', book, class: 'btn btn-danger', method: :delete, data: { confirm: '本を削除しますか？' } %></td>
       </tr>
     <% end %>
   </tbody>
-
 </table>
-<br>
-<%= link_to '新しい書籍の追加', new_book_path, class: "bluebtn" %>
+<%= link_to '新しい書籍の追加', new_book_path, class: 'btn btn-primary'%>
+</div>
+
+
 
