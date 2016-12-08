@@ -41,6 +41,7 @@ body {
 }
 @media (min-width: 768px) {
   .sidebar {
+    width: 100px;
     position: fixed;
     top: 51px;
     bottom: 0;
@@ -83,8 +84,8 @@ body {
 }
 @media (min-width: 768px) {
   .main {
-    padding-right: 40px;
-    padding-left: 40px;
+    padding-right:  0px;
+    padding-left:   0px;
   }
 }
 .main .page-header {
